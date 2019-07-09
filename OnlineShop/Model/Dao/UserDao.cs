@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
-namespace Model.Dao
-{
+using PagedList;
+namespace Model.Dao{
     public class UserDao
     {
         OnlineShopDbContext db = null;
@@ -19,21 +19,40 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
+        public IEnumerable<User> ListAllPaging(int page, int pageSize)
+        {
+            return db.Users.OrderByDescending(x=>x.CreateDate).ToPagedList(page, pageSize);
+        }
         public User GetById(string userName)
         {
             return db.Users.SingleOrDefault(x => x.UserName == userName);
         }
-        public bool Login(String userName, String passWord) 
+        public int Login(string userName, string passWord) 
         {
-            var result = db.Users.Count(x => x.UserName == userName && x.Password == passWord);
-            if (result > 0)
+            var result = db.Users.SingleOrDefault(x => x.UserName == userName);
+            if (result == null)
             {
-                return true;
+                return 0;
             }
             else
             {
-                return false;
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.Password == passWord)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
             }
         }
     }
 }
+

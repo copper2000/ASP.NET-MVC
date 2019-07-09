@@ -173,3 +173,9 @@ E:\ASP.NET-MVC\OnlineShop\OnlineShop\bin\ko\System.Spatial.resources.dll
 E:\ASP.NET-MVC\OnlineShop\OnlineShop\bin\ru\System.Spatial.resources.dll
 E:\ASP.NET-MVC\OnlineShop\OnlineShop\bin\zh-Hans\System.Spatial.resources.dll
 E:\ASP.NET-MVC\OnlineShop\OnlineShop\bin\zh-Hant\System.Spatial.resources.dll
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\EntityFramework.SqlServer.dll
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\EntityFramework.SqlServer.xml
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.dll
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.Mvc.dll
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.xml
+D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.Mvc.xml

@@ -18,3 +18,7 @@ E:\ASP.NET-MVC\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.xml
 E:\ASP.NET-MVC\OnlineShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 E:\ASP.NET-MVC\OnlineShop\Model\obj\Debug\Model.dll
 E:\ASP.NET-MVC\OnlineShop\Model\obj\Debug\Model.pdb
+D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\PagedList.dll
+D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\PagedList.Mvc.dll
+D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\PagedList.xml
+D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\PagedList.Mvc.xml

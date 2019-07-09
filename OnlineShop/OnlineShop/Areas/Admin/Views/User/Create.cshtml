@@ -1,0 +1,183 @@
+﻿@model Model.EF.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@*@section header{
+        Thêm mới người dùng
+    }*@
+@*<h2>Index</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>User</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Phone)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Register</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">TẠO TÀI KHOẢN MỚI!</h1>
+                            </div>
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <form class="user">
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-user", @id = "exampleFirstName", @placeholder = "Tên đăng nhập" })
+                                            @Html.ValidationMessageFor(model => model.UserName)
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            @*<input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">*@
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-user", @id = "exampleLastName", @placeholder = "Mật khẩu", @type = "password" })
+                                            @Html.ValidationMessageFor(model => model.Password)
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            @*<input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">*@
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-user", @id = "exampleLastName", @placeholder = "Họ và tên" })
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            @*<input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">*@
+                                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Địa chỉ" })
+                                            @Html.ValidationMessageFor(model => model.Address)
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            @*<input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">*@
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Email" })
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @*<input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">*@
+                                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Số điện thoại" })
+                                            @Html.ValidationMessageFor(model => model.Phone)
+                                        </div>
+                                    </div>
+                                    @*<a href="login.html" type="" class="btn btn-primary btn-user btn-block">
+                                            Register Account
+                                        </a>*@
+                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký tài khoản" />
+                                </form>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Đã có tài khoản? Đăng nhập!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+</html>
