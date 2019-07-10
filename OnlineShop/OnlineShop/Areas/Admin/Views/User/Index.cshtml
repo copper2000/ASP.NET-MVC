@@ -1,110 +1,148 @@
 ﻿@model PagedList.IPagedList<Model.EF.User>
 @using PagedList.Mvc;
-
 @{
     ViewBag.Title = "Quản lý người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
-    @section header{
-            Danh sách người dùng
+@section header{
+    Danh sách người dùng
+}
+<style>
+    .pagination li a {
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-right: none;
     }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin 2 - Tables</title>
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-</head>
-<body id="page-top">
-        <!-- Content Wrapper -->
-                <div class="container-fluid">                             
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng dữ liệu</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Tên đăng nhập</th>
-                                            <th>Họ và tên</th>
-                                            <th>Email</th> 
-                                            <th>Chỉnh sửa</th>                                           
-                                        </tr>
-                                    </thead>
-                                    @*<tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>*@
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    <a href="/User/Edit/@item.ID">Sửa</a>
-                                                    <a href="/User/Delete/@item.ID">Xóa</a>
-                                                </td>
-                                                <td>@item.ID</td>
-                                                <td>@item.UserName</td>
-                                                <td>@item.Name</td>
-                                                <td>@item.Email</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>                                
-                            </div>
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                        </div>
-                    </div>
-                </div>
-                <!-- /.container-fluid -->           
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->   
-        <!-- End of Content Wrapper -->
 
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>    
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-</body>
-</html>
+    .pagination li:last-child a {
+        border-right: 1px solid #eee;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pagination li:first-child a {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination li.active a {
+        background: #78497D;
+        color: #fff;
+    }
+
+        .pagination li.active a:hover {
+            background: #78497D;
+        }
+
+    .pagination li.PagedList-skipToNext a {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pagination li.PagedList-skipToPrevious a {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination li a, .pagination li a:hover, .pagination li a:focus {
+        text-decoration: none;
+        color: #544C95;
+    }
+
+        .pagination li a:hover, .pagination li a:focus {
+            background: #eee;
+        }
+
+    .pagination li.active a:hover {
+        color: #fff;
+    }
+
+    .pagination-container::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .pagination {
+        float: right;
+    }
+</style>
+<!-- Content Wrapper -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Bảng dữ liệu</h6>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Index", "User", FormMethod.Get))
+            {
+                <div class="container" style="float: right">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" name="SearchString" style="margin-bottom: 5px;" class="form-control bg-light border-0 small" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" style="margin-bottom: 5px;" type="submit">Tìm Kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Chỉnh sửa bởi</th>
+                            <th>Tùy chọn</th>
+                        </tr>
+                    </thead>
+                    @*<tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot>*@
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="row_@item.ID">
+                                <td>@item.ID</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.ModifiedBy</td>
+                                <td>
+                                    <a href="/Admin/User/Edit/@item.ID">Sửa</a>
+                                    |
+                                    @Ajax.ActionLink("Xoá", "Delete", new { @id = item.ID }, new AjaxOptions
+                               {
+                                   Confirm = "Bạn có muốn xóa bản ghi này?",
+                                   OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                   HttpMethod = "Delete"
+                               })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+<!-- End of Main Content -->
+<!-- End of Footer -->
+<!-- End of Content Wrapper -->
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
