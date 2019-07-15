@@ -13,13 +13,13 @@ namespace Model.Dao{
         {
             db = new OnlineShopDbContext();
         }
-        public long Insert(User entity)
+        public long Insert(User entity) // INSERT
         {
             db.Users.Add(entity);
             db.SaveChanges();
             return entity.ID;
         }
-        public bool Update(User entity)
+        public bool Update(User entity) // UPDATE
         {
             try {
                 var user = db.Users.Find(entity.ID);
@@ -40,7 +40,7 @@ namespace Model.Dao{
             }
            
         }
-        public IEnumerable<User> ListAllPaging(string SearchString, int page, int pageSize)
+        public IEnumerable<User> ListAllPaging(string SearchString, int page, int pageSize) // SEARCH
         {
             IQueryable<User> model = db.Users;
             if (!string.IsNullOrEmpty(SearchString))
@@ -83,7 +83,7 @@ namespace Model.Dao{
                 }
             }
         }
-        public bool Delete(int id)
+        public bool Delete(int id) // DELETE
         {
             try
             {

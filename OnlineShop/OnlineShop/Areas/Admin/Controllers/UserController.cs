@@ -15,7 +15,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         //
         // GET: /Admin/User/
 
-        public ActionResult Index(string SearchString, int page = 1, int pageSize = 5)
+        public ActionResult Index(string SearchString, int page = 1, int pageSize = 5) // SEARCH
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(SearchString, page, pageSize);

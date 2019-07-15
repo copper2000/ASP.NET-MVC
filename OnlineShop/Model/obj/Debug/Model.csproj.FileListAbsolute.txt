@@ -1,4 +1,3 @@
-D:\ASPdotNetMVC\OnlineShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\Model.dll.config
 D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\Model.dll
 D:\ASPdotNetMVC\OnlineShop\Model\bin\Debug\Model.pdb
