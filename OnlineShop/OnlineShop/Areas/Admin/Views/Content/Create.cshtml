@@ -19,6 +19,10 @@
                 finder.popup();
             })
         })
+        
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/assets/admin/js/plugins/ckeditor/config.js',
+        });
     </script>
 }
 @using (Html.BeginForm())
@@ -64,7 +68,7 @@
             @Html.LabelFor(model => model.CategoryID)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryID)
+            @Html.DropDownListFor(model => model.CategoryID, null, new { htmlAttributes = new { @class = "form-control"} })
             @Html.ValidationMessageFor(model => model.CategoryID)
         </div>
 
@@ -72,7 +76,7 @@
             @Html.LabelFor(model => model.Detail)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Detail)
+            @Html.TextAreaFor(model => model.Detail, new { id = "txtContent"})
             @Html.ValidationMessageFor(model => model.Detail)
         </div>
 
@@ -132,13 +136,13 @@
             @Html.ValidationMessageFor(model => model.MetaDescriptions)
         </div>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.Status)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Status)
             @Html.ValidationMessageFor(model => model.Status)
-        </div>
+        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.TopHot)
@@ -163,7 +167,7 @@
             @Html.EditorFor(model => model.Tags)
             @Html.ValidationMessageFor(model => model.Tags)
         </div>
-
+        <br/>
         <p>
             <input type="submit" value="Create" />
         </p>

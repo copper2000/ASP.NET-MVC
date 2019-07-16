@@ -15,7 +15,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         //
         // GET: /Admin/User/
 
-        public ActionResult Index(string SearchString, int page = 1, int pageSize = 5) // SEARCH
+        public ActionResult Index(string SearchString, int page = 1, int pageSize = 5) 
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(SearchString, page, pageSize);
@@ -44,6 +44,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
+                    SetAlert("Thêm người dùng thành công", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
@@ -71,6 +72,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 var result = dao.Update(user);
                 if (result)
                 {
+                    SetAlert("Cập nhật người dùng thành công", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
