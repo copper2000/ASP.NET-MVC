@@ -179,4 +179,3 @@ D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.dll
 D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.Mvc.dll
 D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.xml
 D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\PagedList.Mvc.xml
-D:\ASPdotNetMVC\OnlineShop\OnlineShop\bin\CKFinder.pdb

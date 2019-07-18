@@ -6,8 +6,11 @@
     var listFeatureProduct = (List<Model.EF.Product>)ViewBag.FeatureProduct;
 }
 @section slide{
+    <div class="header_slide">
     <div class="header_bottom_left">
-        @{Html.RenderAction("ProductCategory", "Product");}
+        <div class="categories">
+            @{Html.RenderAction("ProductCategory", "Product");}
+        </div>
     </div>
     <div class="header_bottom_right">
         <div class="slider">
@@ -37,6 +40,7 @@
             <div class="clear"></div>
         </div>
     </div>
+</div>
 }
 <div class="content" style="font-family: 'Ubuntu', sans-serif;">
     <div class="content_top">

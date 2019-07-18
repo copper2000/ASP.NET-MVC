@@ -23,5 +23,18 @@ namespace OnlineShop.Controllers
             var model = new ProductCategoryDao().ListAll();
             return PartialView(model);
         }
+        public ActionResult Category(long id)
+        {
+            var category = new CategoryDao().ViewDatail(id);
+            return View(category);
+        }
+        public ActionResult Detail(long id)
+        {
+            var product = new ProductDao().ViewDetail(id);
+            ViewBag.Category = new ProductCategoryDao().ViewDetail(product.CategoryID.Value);
+            ViewBag.RelatedProduct = new ProductDao().ListRelatedProduct(id);
+            return View(product);
+        }
+
     }
 }
