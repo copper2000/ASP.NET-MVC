@@ -4,44 +4,95 @@
     ViewBag.Title = category.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .pagination li a {
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-right: none;
+    }
+
+    .pagination li:last-child a {
+        border-right: 1px solid #eee;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pagination li:first-child a {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination li.active a {
+        background: #78497D;
+        color: #fff;
+    }
+
+        .pagination li.active a:hover {
+            background: #78497D;
+        }
+
+    .pagination li.next a {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pagination li.last a {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination li a, .pagination li a:hover, .pagination li a:focus {
+        text-decoration: none;
+        color: #544C95;
+    }
+
+        .pagination li a:hover, .pagination li a:focus {
+            background: #eee;
+        }
+
+    .pagination li.active a:hover {
+        color: #fff;
+    }
+
+</style>
 @*@section slide{
-    <div class="header_slide">
-        <div class="header_bottom_left">
-            <div class="categories">
-                @{Html.RenderAction("ProductCategory", "Product");}
-            </div>
-        </div>
-        @*<div class="header_bottom_right">
-                <div class="slider">
-                    <div id="slider">
-                        <div id="mover">
-                            @foreach (var item in slides)
-                            {
-
-                                <div class="slide">
-                                    <div class="slider-img">
-                                        <a href="@item.Link"><img src="@item.Image" alt="Learn more" /></a>
-                                    </div>
-                                    <div class="slider-text">
-                                        <h1>Clearance<br><span>SALE</span></h1>
-                                        <h2>UPTo 20% OFF</h2>
-                                        <div class="features_list">
-                                            <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
-                                        </div>
-                                        <a href="preview.html" class="button">Shop Now</a>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                            }
-                        </div>
-                    </div>
-                    <div class="clear"></div>
+        <div class="header_slide">
+            <div class="header_bottom_left">
+                <div class="categories">
+                    @{Html.RenderAction("ProductCategory", "Product");}
                 </div>
             </div>
-    </div>
+            @*<div class="header_bottom_right">
+                    <div class="slider">
+                        <div id="slider">
+                            <div id="mover">
+                                @foreach (var item in slides)
+                                {
 
-}*@
+                                    <div class="slide">
+                                        <div class="slider-img">
+                                            <a href="@item.Link"><img src="@item.Image" alt="Learn more" /></a>
+                                        </div>
+                                        <div class="slider-text">
+                                            <h1>Clearance<br><span>SALE</span></h1>
+                                            <h2>UPTo 20% OFF</h2>
+                                            <div class="features_list">
+                                                <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
+                                            </div>
+                                            <a href="preview.html" class="button">Shop Now</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+        </div>
+
+    }*@
 <div class="content">
     <div class="content_top">
         <div class="heading">
@@ -72,46 +123,50 @@
             </div>
         }
 
+    </div>
         <!--Phân trang-->
         @if (ViewBag.TotalPage > 1)
         {
             var pageDisplay = (int)ViewBag.MaxPage;
             int totalPage = (int)ViewBag.TotalPage;
             int currentPage = ((int)ViewBag.Page);
-            
+
             // Create numberic links
             var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
             var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
 
             var link = "/san-pham/" + category.MetaTitle + "-" + category.ID;
-            
-            <div class="paging">
-                @if (currentPage > ViewBag.First)
-                {
-                    <a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fas fa-caret-right"></i></a>
-                    <a href="@link?page=@ViewBag.Previous" title="Trang trước" class="previous"><i class="fas fa-caret-left"></i></a>
-                }
-                @for(int i = startPageIndex; i <= endPageIndex; i++)
-                {
-                    if(currentPage == 1)
+            <nav>
+                <ul class="pagination">
+                    @if (currentPage > ViewBag.First)
                     {
-                        <a href="@link?page=@i" class="active" title="Trang @i">@i</a>
+                        <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fas fa-caret-left"></i></a></li>
+
+                        <li><a href="@link?page=@ViewBag.Previous" title="Trang trước" class="previous"><i class="fas fa-caret-right"></i></a></li>
                     }
-                    else
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
                     {
-                        <a href="@link?page=@i" title="Trang @i" class="pos">@i</a>
+                        if (currentPage == 1)
+                        {
+                            <li><a href="@link?page=@i" class="active" title="Trang @i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>
+                        }
                     }
-                }
-                @if (currentPage < totalPage)
-                {
-                    <a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fas fa-caret-right"></a>
-                    <a href="@link?page=@ViewBag.Last" class="next" title="Trang cuối"><i class="fas fa-angle-double-right"></i></a>
-                }
-            </div>
+                    @if (currentPage < totalPage)
+                    {
+                        <li><a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fas fa-caret-right"></i></a></li>
+                        <li><a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fas fa-angle-double-right"></i></a></li>
+                    }
+                </ul>
+            </nav>
         }
         else
         {
             <span>Không có bản ghi nào</span>
         }
-    </div>
+
+
 </div>

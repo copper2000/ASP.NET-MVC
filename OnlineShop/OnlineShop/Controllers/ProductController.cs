@@ -23,7 +23,7 @@ namespace OnlineShop.Controllers
             var model = new ProductCategoryDao().ListAll();
             return PartialView(model);
         }
-        public ActionResult Category(long id, int page = 1, int pageSize = 2)
+        public ActionResult Category(long id, int page = 1, int pageSize = 1)
         {
             var category = new CategoryDao().ViewDatail(id);
             ViewBag.Category = category;
@@ -34,8 +34,8 @@ namespace OnlineShop.Controllers
             ViewBag.Page = page;
 
             int maxPage = 5;
-            int totalPage = 0;
-             
+            int totalPage = 0;             
+
             totalPage = (int)Math.Ceiling((double)(totalRecord/pageSize));
             ViewBag.TotalPage = totalPage;
             ViewBag.MaxPage = maxPage;
@@ -43,6 +43,7 @@ namespace OnlineShop.Controllers
             ViewBag.Last = totalPage;
             ViewBag.Next = page + 1;
             ViewBag.Previous = page - 1;
+
             return View(model);
         }
         public ActionResult Detail(long id)
